@@ -1,0 +1,13 @@
+rootProject.name = 'nfcread'
+include ':react-native-nfc-hce'
+project(':react-native-nfc-hce').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-nfc-hce/android')
+include ':react-native-nfc-manager'
+project(':react-native-nfc-manager').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-nfc-manager/android')
+
+apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+includeUnimodulesProjects()
+
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+applyNativeModulesSettingsGradle(settings)
+
+include ':app'

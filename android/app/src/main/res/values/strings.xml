@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">nfc-read</string>
+    <string name="card_title">Sample AID for testing</string>
+    <string name="service_name">Host Card Emulator Service</string>
+</resources>

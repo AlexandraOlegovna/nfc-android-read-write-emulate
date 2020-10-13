@@ -1,0 +1,12 @@
+{
+  "name": "nfc-read",
+  "displayName": "nfc-read",
+  "expo": {
+    "name": "nfc-read",
+    "slug": "nfc-read",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
