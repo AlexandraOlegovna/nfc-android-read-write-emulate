@@ -40,7 +40,9 @@ export const ReadScreen = () => {
     };
 
     try {
-      NfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag) => {
+      await NfcManager.unregisterTagEvent()
+      await NfcManager.cancelTechnologyRequest().catch(() => 0);
+      await NfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag) => {
         try {
           if (tag.ndefMessage &&
             Ndef.isType(tag.ndefMessage[0], Ndef.TNF_WELL_KNOWN, Ndef.RTD_TEXT)) {
@@ -60,7 +62,7 @@ export const ReadScreen = () => {
       NfcManager.registerTagEvent({
         readerModeFlags: 0x1,
         isReaderModeEnabled: true,
-        readerModeDelay: 1
+        readerModeDelay: 5
       });
     } catch (ex) {
       console.log("ex", ex);

@@ -27,9 +27,10 @@ export const WriteScreen = () => {
   };
 
   const startWrite = async () => {
-    NfcManager.requestTechnology([]);
     try {
-      NfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag) => {
+      await NfcManager.unregisterTagEvent()
+      await NfcManager.cancelTechnologyRequest().catch(() => 0);
+      await NfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag) => {
         try {
           await NfcManager.connect([NfcTech.Ndef]);
           console.log(arr2str(image))
@@ -39,7 +40,7 @@ export const WriteScreen = () => {
           console.warn(er);
         }
       });
-      await NfcManager.registerTagEvent({});
+      await NfcManager.registerTagEvent();
     } catch (ex) {
       console.warn("ex", ex);
     }
